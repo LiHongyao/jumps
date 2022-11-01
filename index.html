@@ -2,7 +2,7 @@
  * @Author: Lee
  * @Date: 2022-11-01 15:04:29
  * @LastEditors: Lee
- * @LastEditTime: 2022-11-01 15:33:52
+ * @LastEditTime: 2022-11-01 16:54:52
  * @Description: 
 -->
 <!DOCTYPE html>
@@ -27,40 +27,29 @@
       .tips {
         margin-top: 16px;
         font-size: 14px;
-        color: #999999;
+        color: #d3d3d3;
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <img src="./images/qq.png" alt="logo" width="50" />
-      <div class="tips">正在为您跳转至QQ...</div>
-      <!-- <button onclick="jumpTencentContactWith('894416347')">立即前往</button> -->
-      <!-- <button onclick="nativeBack()">返回</button> -->
+      <img src="./images/qq.png" alt="logo" width="70" />
+      <div class="tips">即将跳转至QQ客服...</div>
     </div>
   </body>
 
   <script type="text/javascript">
-    function nativeBack() {
-      window.js_android.nativeBack();
-    }
     function jumpTencentContactWith(qqNum) {
-      var system = {};
-      var p = navigator.platform;
-      system.win = p.indexOf('Win') == 0;
-      system.mac = p.indexOf('Mac') == 0;
-      system.x11 = p == 'X11' || p.indexOf('Linux') == 0;
-      var s1 = `http://wpa.qq.com/msgrd?v=3&uin=${qqNum}&site=qq&menu=yes`;
-      var s2 = `mqqwpa://im/chat?chat_type=wpa&uin=${qqNum}&version=1&src_type=web`;
-      if (system.win || system.mac || system.xll) {
-        /** 如果是电脑跳转到 */
-        window.location.href = s1;
-      } else {
+      var jumpToComputer = `http://wpa.qq.com/msgrd?v=3&uin=${qqNum}&site=qq&menu=yes`;
+      var jumpToMobile = `mqqwpa://im/chat?chat_type=wpa&uin=${qqNum}&version=1&src_type=web`;
+      if (/Mobile/i.test(navigator.userAgent)) {
         /** 如果是手机,跳转到 */
-        window.location.href = s2;
-        setTimeout(() => {}, 500);
+        window.location.href = jumpToMobile;
+      } else {
+        /** 如果是电脑跳转到 */
+        window.location.href = jumpToComputer;
       }
     }
-    jumpTencentContactWith('894416347');
+    jumpTencentContactWith("894416347");
   </script>
 </html>
