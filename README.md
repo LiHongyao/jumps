@@ -1,10 +1,3 @@
-<!--
- * @Author: Lee
- * @Date: 2022-11-01 16:53:45
- * @LastEditors: Lee
- * @LastEditTime: 2022-11-01 16:55:04
- * @Description: 
--->
 # 跳转至QQ指定联系人
 
 
